@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // included for strtoul
 
 int main(int argc, char **argv)
 {
@@ -23,9 +23,19 @@ int main(int argc, char **argv)
   while (fgets(line, 1024, fp) != NULL)
   {
     // printf("%s", line);
-    unsigned char val = (strtoul(line, NULL, 2));
+    char *endptr;
+
+    unsigned char val = (strtoul(line, &endptr, 2));
+
+    if (line == endptr)
+    {
+      printf("SKIPPING: %s\n", line);
+      continue;
+    }
     printf("%02x\n", val);
   }
+
+  //store in memory
 
   fclose(fp);
 }
