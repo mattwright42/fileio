@@ -33,9 +33,9 @@ int main(int argc, char **argv)
       continue;
     }
     printf("%02x\n", val);
+    //store in memory
   }
 
-  //store in memory
-
+  
   fclose(fp);
 }
