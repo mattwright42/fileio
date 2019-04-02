@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
@@ -21,7 +22,9 @@ int main(int argc, char **argv)
 
   while (fgets(line, 1024, fp) != NULL)
   {
-    printf("%s", line);
+    // printf("%s", line);
+    unsigned char val = (strtoul(line, NULL, 2));
+    printf("%02x\n", val);
   }
 
   fclose(fp);
